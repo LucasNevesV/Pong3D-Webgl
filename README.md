@@ -7,4 +7,4 @@ Jogar
 -----
 
 Para jogar o jogo basta entrar no link:
-https://lucasnevesv.github.io/Pong3D-WebGL/index.html
+https://lucasnevesv.github.io/Pong3D-Webgl/index.html
