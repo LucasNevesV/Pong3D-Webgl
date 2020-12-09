@@ -153,6 +153,24 @@ function handleMouseEvent(event) {
     }
 }
 
+function changeCamera(type) {
+    var pMatrix = mat4.create();
+    var ratio = canvas.width / canvas.height;
+    mat4.perspective(60, ratio, 0.1, 100, pMatrix);
+    if (type == '3d side'){
+        mat4.translate(pMatrix, [0.0, 7.0, -3.0]);
+        mat4.rotate(pMatrix, 0.7, [-1.0, 0.0, 0.0]);
+        mov_axis = 'y';
+    } else if (type == '3d back') {
+        mat4.translate(pMatrix, [0.0, 10.0, -6.0]);
+        mat4.rotate(pMatrix, 1.57, [0.0, 0.0, 1.0]);
+        mat4.rotate(pMatrix, 1.0, [0.0, 0.5, 0.0]);
+        mov_axis = 'x';
+    } else {
+        mov_axis = 'y';
+    }
+    gl.uniformMatrix4fv(glProgram.uPMatrix, false, pMatrix);
+}
 
 function updateStatusPong(msg) {
     if (!masterPong && msg.disk){
